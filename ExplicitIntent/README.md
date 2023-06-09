@@ -12,6 +12,23 @@ Latest Version Android Studio
 
 ## ALGORITHM:
 
+step1:Create the first activity with a layout that includes an EditText for number input and a
+Button for the Factorial action.
+
+step2:Implement an OnClickListener for the Factorial button that retrieves the number from
+the EditText, calculates its factorial, and creates an Intent to open the second activity.
+
+step3:Pass the calculated factorial value as an extra data in the Intent.
+
+step4:In the second activity, retrieve the factorial value from the Intent using
+getIntent().getIntExtra() method.
+
+step5:Update the layout of the second activity to display the factorial value.
+
+step6:Declare the second activity in the AndroidManifest.xml file.
+
+step7:Build and run the application to test the functionality of both screens
+
 
 
 ## PROGRAM:
