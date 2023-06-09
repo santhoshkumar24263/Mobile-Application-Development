@@ -55,106 +55,63 @@ Registeration Number :212221040146
 */
 ```
 **MainActivity.java:**
-package com.example.experiment_9;
+package com.example.experiment_10;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 
+import android.content.Intent;
+
 import android.os.Bundle;
 
-import android.widget.Button;
+import android.view.Menu;
 
-import android.widget.EditText;
-
-import android.widget.TextView;
+import android.view.MenuItem;
 
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity 
 {
 
-    Button btnadd,btnsubs,btnmult,btndiv;
-    EditText txt1,txt2;
-    TextView result;
-    @SuppressLint("SetTextI18n")
+    private Intent i2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnadd=findViewById(R.id.btnadd);
-        btnsubs=findViewById(R.id.btnsubs);
-        btndiv=findViewById(R.id.btndiv);
-        btnmult=findViewById(R.id.btnmult);
-        txt1=findViewById(R.id.txt1);
-        txt2=findViewById(R.id.txt2);
-        result=findViewById(R.id.result);
-        btnadd.setOnClickListener(view -> {
-            if (txt1.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.message:
+                Toast.makeText(getApplicationContext(), "Shows share icon",
                         Toast.LENGTH_SHORT).show();
-            } else if (txt2.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
+                return true;
+            case R.id.picture:
+                Toast.makeText(getApplicationContext(), "Shows image icon",
                         Toast.LENGTH_SHORT).show();
-            }
-            else {
-                float a, b, c;
-                a = Float.parseFloat(txt1.getText().toString());
-                b = Float.parseFloat(txt2.getText().toString());
-                c = a + b; // Using Third Variable To Store Output Value
-                result.setText("The Addition Result Is " + c);
-            }
-        });
-        btnsubs.setOnClickListener(view -> {
-            if (txt1.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
+                startActivity(i2);
+                return (true);
+            case R.id.mode:
+                Toast.makeText(getApplicationContext(), "Shows call icon",
                         Toast.LENGTH_SHORT).show();
-            } else if (txt2.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
+                return (true);
+            case R.id.about:
+                Toast.makeText(getApplicationContext(), "calculator menu",
                         Toast.LENGTH_SHORT).show();
-            }
-            else {
-                float a, b, c;
-                a = Float.parseFloat(txt1.getText().toString());
-                b = Float.parseFloat(txt2.getText().toString());
-                c = a - b; // Using Third Variable To Store Output Value
-                result.setText("The Subtraction Result Is " + c);
-            }
-        });
-        btnmult.setOnClickListener(view -> {
-            if (txt1.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
-                        Toast.LENGTH_SHORT).show();
-            } else if (txt2.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
-                        Toast.LENGTH_SHORT).show();
-            }
-            else {
-                float a, b, c;
-                a = Float.parseFloat(txt1.getText().toString());
-                b = Float.parseFloat(txt2.getText().toString());
-                c = a*b; // Using Third Variable To Store Output Value
-                result.setText("The Multiplication Result Is " + c);
-            }
-        });
-        btndiv.setOnClickListener(view -> {
-            // Checking Input First Is Blank Or Not
-            if (txt1.getText().toString().equals("")) {
-                // Showing Toast (Message)
-                Toast.makeText(MainActivity.this, "Please Enter Number",
-                        Toast.LENGTH_SHORT).show();
-            } else if (txt2.getText().toString().equals("")) {
-                Toast.makeText(MainActivity.this, "Please Enter Number",
-                        Toast.LENGTH_SHORT).show();
-            }
-            else {
-                float a, b, c;
-                a = Float.parseFloat(txt1.getText().toString());
-                b = Float.parseFloat(txt2.getText().toString());
-                c = a/b; // Using Third Variable To Store Output Value
-                result.setText("The Division Result Is " + c);
-            }
-        });
+                return (true);
+            case R.id.exit:
+                finish();
+                return (true);
+        }
+        return (super.onOptionsItemSelected(item));
     }
 }
 
@@ -162,90 +119,43 @@ public class MainActivity extends AppCompatActivity
 
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="111dp"
-        android:layout_marginTop="25dp"
-        app:srcCompat="@drawable/img"
-        tools:ignore="ContentDescription" />
+    tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/txt1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:ems="10"
-        android:hint="First Number"
-        android:inputType="numberDecimal"
-        tools:ignore="Autofill,HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+    <item
+        android:id="@+id/message"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="message"
+        app:showAsAction="always" />
 
-    <EditText
-        android:id="@+id/txt2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:ems="10"
-        android:hint="Second Number"
-        android:inputType="numberDecimal"
-        tools:ignore="Autofill,HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-    <Button
-        android:id="@+id/btnadd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Add"
-        tools:ignore="HardcodedText,VisualLintButtonSize" />
-    <Button
-        android:id="@+id/btnsubs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Subtract"
-        tools:ignore="HardcodedText,VisualLintButtonSize" />
-    <Button
-        android:id="@+id/btndiv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Divide"
-        tools:ignore="HardcodedText,VisualLintButtonSize" />
-    <Button
-        android:id="@+id/btnmult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Multiply"
-        tools:ignore="HardcodedText,VisualLintButtonSize" />
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="20dp" />
-  
-</LinearLayout>
+    <item
+        android:id="@+id/picture"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="picture"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/mode"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="mode"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/about"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="calculator"
+        app:showAsAction="never|withText" />
+
+    <item
+        android:id="@+id/exit"
+        android:title="exit"
+        app:showAsAction="never" />
+    
+</menu>
+
 
 
 ## OUTPUT:
