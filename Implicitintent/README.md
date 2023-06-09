@@ -17,12 +17,97 @@ Latest Version Android Studio
 ```
 /*
 Program to print the text “Implicitintent”.
-Developed by:
-Registeration Number :
+Developed by:Santhosh kumar B
+Registeration Number :212221040146
 */
 ```
+**MainActivity.xml:**
 
-## OUTPUT
+package com.example.experiment_3;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+
+import android.net.Uri;
+
+import android.os.Bundle;
+
+import android.widget.Button;
+
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity
+{
+
+    Button button;
+    EditText editText;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button = findViewById(R.id.button);
+        editText =findViewById(R.id.editText);
+        button.setOnClickListener(view -> {
+            String url=editText.getText().toString();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
+    }
+}
+
+**activity_main.xml:**
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <EditText
+              
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476"
+        tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="172dp"
+        android:text="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53" />
+        
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+## OUTPUT:
+
+![2023-06-08 (15)](https://github.com/santhoshkumar24263/Mobile-Application-Development/assets/127171952/5ce5c073-a484-4ffa-9b62-88c44312752b)
+
+![2023-06-08 (14)](https://github.com/santhoshkumar24263/Mobile-Application-Development/assets/127171952/ea20a5dc-30a6-4132-8301-937c333a2d3a)
 
 
 
