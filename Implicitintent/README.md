@@ -11,6 +11,34 @@ Latest Version Android Studio
 
 ## ALGORITHM:
 
+Step1:Open Android Studio and create a new project.
+
+Step2:In the activity_main.xml file, design the layout with a TextInputEditText element for
+the text field and a Button element for the "Navigate" button.
+
+Step3:In the MainActivity.java file, retrieve references to the text field and the button using
+their IDs.
+
+Step4:Set an OnClickListener for the button.
+
+Step5:Inside the OnClickListener, retrieve the text entered in the text field using the getText()
+method.
+
+Step6:Create an Intent object to open a web page with the URL obtained from the text field.
+
+Step7:Set the action of the intent to Intent.ACTION_VIEW to indicate that the intent is used
+for viewing something.
+
+Step8:Set the data of the intent to the URL obtained from the text field using the Uri.parse()
+method.
+
+Step9:Set the type of the intent to "text/html" or "text/plain" to specify the type of data being
+viewed.
+
+Step10:Use the startActivity() method with the intent to start the activity that can handle the
+implicit intent.
+
+Step11:Run the application on an Android device or emulator to see the desired functionality.
 
 
 ## PROGRAM:
